@@ -1,0 +1,36 @@
+.header-info {
+    text-align: center;
+    text-decoration: none;
+    font-size: 7rem;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-family: "Roboto Slab", serif;
+    color: var(--black-brown-ribbon);
+}
+
+.info p {
+    font-size: 1.6rem;
+    color: var(--black-brown-ribbon);
+    text-decoration: none;
+    max-width: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align:justify;
+
+    margin: auto;
+    margin-top: 1rem;
+    padding: 1rem 0;
+}
+
+.info p:first-child {
+    font-size: 2.6rem;
+    color: var(--black-brown-ribbon);
+    text-decoration: none;
+    max-width: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin: auto;
+    margin-top: 1rem;
+    padding: 1rem 0;
+}

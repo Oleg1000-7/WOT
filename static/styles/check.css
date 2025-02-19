@@ -1,0 +1,93 @@
+main {
+    scroll-snap-align: none;
+}
+
+li p {
+    font-size: 1.6rem;
+    opacity: 0.75;
+    background-color: var(--black-brown-ribbon);
+    box-shadow: 1px 1px 4px var(--black-brown-ribbon);
+    color: var(--white-sky);
+    text-align: center;
+    text-decoration: none;
+    max-width: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin: auto;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    user-select: none;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.header-test {
+    text-align: center;
+    text-decoration: none;
+    font-size: 3rem;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-family: "Roboto Slab", serif;
+    color: var(--black-brown-ribbon);
+}
+
+.element-choosen>p{
+    background-color: #fff;
+}
+
+.confirm {
+  width: 25%;
+  text-decoration: none;
+  color: var(--black-brown-ribbon);
+  background-color: #FFF;
+  font-size: 2rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+  padding: 1.5rem 0;
+  transition: 0.2s ease-in-out;
+  display: block;
+  margin: 4rem auto;
+  opacity: 0.8;
+}
+
+.result-window {
+    width: 40%;
+    height: 30%;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid var(--black-brown-ribbon);
+    border-radius: 10px;
+    background-color: var(--white-sky);
+    color: var(--black-brown-ribbon);
+    margin: auto;
+}
+
+.confirm:hover {
+    opacity: 1;
+}
+
+.result {
+    color: var(--black-brown-ribbon);
+    text-decoration: none;
+    font-size: 2.5rem;
+}
+  
+.save {
+    width: 25%;
+    text-decoration: none;
+    color: var(--black-brown-ribbon);
+    background-color: #FFF;
+    font-size: 1rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    transition: 0.2s ease-in-out;
+    display: block;
+    margin: 2rem auto;
+    opacity: 0.8;
+}
+  
+.save:hover {
+    opacity: 1;
+}

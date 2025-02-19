@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Raskalnikov';
+    src: url('../fonts/Raskalnikov.woff2') format('woff2'),
+        url('../fonts/Raskalnikov.woff') format('woff'),
+        url('../fonts/Raskalnikov.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Stengazeta';
+    src: url('../fonts/Stengazeta-Regular.woff2') format('woff2'),
+        url('../fonts/Stengazeta-Regular.woff') format('woff'),
+        url('../fonts/Stengazeta-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

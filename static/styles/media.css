@@ -1,0 +1,48 @@
+@media screen and (max-width: 1300px) {
+  .timeline-card {
+    max-width: 23vw;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .timeline-card {
+    max-width: 31vw;
+  }
+  .nav-link {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .timeline-slider-help {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 9px;
+  }
+  .timeline-card {
+    max-width: 47vw;
+  }
+  .nav-container {
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .nav-link {
+    display: none;
+    width: 100%;
+  }
+  .nav-burger {
+    font-size: 2rem;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .timeline-card {
+    max-width: 98vw;
+  }
+}

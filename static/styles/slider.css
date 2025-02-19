@@ -1,0 +1,76 @@
+.timeline-slider {
+  max-width: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(
+    var(--orange-ribbon) 0% 5%,
+    var(--black-brown-ribbon) 5% 23%,
+    var(--orange-ribbon) 23% 41%,
+    var(--black-brown-ribbon) 41% 59%,
+    var(--orange-ribbon) 59% 77%,
+    var(--black-brown-ribbon) 77% 95%,
+    var(--orange-ribbon) 95% 100%
+  );
+  padding: 25px 0;
+}
+
+.timeline-slider .range-slider__thumb {
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #c1ddee;
+  background: #7f7070;
+}
+
+.timeline-slider .range-slider__range {
+  /* background: linear-gradient(
+    #be8a3b77 0% 5%,
+    #36332777 5% 23%,
+    var(--orange-ribbon) 23% 41%,
+    var(--black-brown-ribbon) 41% 59%,
+    var(--orange-ribbon) 59% 77%,
+    var(--black-brown-ribbon) 77% 95%,
+    var(--orange-ribbon) 95% 100%
+  ); */
+  filter: blur(15px);
+  background: #363327da;
+  border: 1px solid #c1ddee;
+  border-radius: 5px;
+  height: 100%;
+}
+
+element-selector {
+  /* CSS for the wrapper element */
+}
+
+element-selector[data-disabled] {
+  /* CSS for disabled range slider element */
+}
+
+element-selector .range-slider__range {
+  /* CSS for range */
+}
+
+element-selector .range-slider__range[data-active] {
+  /* CSS for active (actively being dragged) range */
+}
+
+element-selector .range-slider__thumb {
+  /* CSS for thumbs */
+}
+
+element-selector .range-slider__thumb[data-lower] {
+  /* CSS for lower thumb */
+}
+
+element-selector .range-slider__thumb[data-upper] {
+  /* CSS for upper thumb */
+}
+
+element-selector .range-slider__thumb[data-active] {
+  /* CSS for active (actively being dragged) thumbs */
+}
+
+element-selector .range-slider__thumb[data-disabled] {
+  /* CSS for disabled thumbs */
+}
