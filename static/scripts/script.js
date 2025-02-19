@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const timelineDivImage = document.createElement("div");
 
     const timelineImage = document.createElement("img");
-    timelineImage.src = `images/bg${randImage}.jpg`;
+    timelineImage.src = `static/images/bg${randImage}.jpg`;
     timelineDivImage.appendChild(timelineImage);
     timelineCard.appendChild(timelineDivImage);
 
