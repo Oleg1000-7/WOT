@@ -1,46 +1,27 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/media.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/check.css') }}">
+{% extends "base.html" %}
 
-    
-        <title>Проверь себя</title>
-      </head>
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/check.css') }}">
+{% endblock %}
 
-      <body>
-        <nav class="header-nav">
-            <div class="nav-container">
-              <a href="index" class="nav-link">таймлайн</a>
-              <a href="#" class="nav-link">проверь себя</a>
-              <a href="about" class="nav-link">о сайте</a>
-              <a href="contacts" class="nav-link">контакты</a>
-              <a href="#" class="nav-link nav-burger">☰</a>
-            </div>
-        </nav>
-        <main>
-            <div>
-                <p class="header-test">Проверьте свои знания за период:<br></p>
-            </div>
-            <ul class="test"></ul>
-            <button class="confirm">Проверить</button>
-            <div class="outer">
-              <div class="result-window">
-                <p class="result"></p>
-                <button class="save">Закрыть</button>
-              </div>
-            </div>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
-        <script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
-        <script src="{{ url_for('static', filename='scripts/check_script.js') }}"></script>
-      </body> 
-</html>
+{% block content %}
+<div>
+    <p class="header-test">Проверьте свои знания за период:<br></p>
+</div>
+<ul class="test"></ul>
+<button class="confirm">Проверить</button>
+<div class="outer">
+  <div class="result-window">
+    <p class="result"></p>
+    <button class="save">Закрыть</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+  <script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/check_script.js') }}"></script>
+{% endblock %}

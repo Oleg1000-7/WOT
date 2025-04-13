@@ -1,40 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/media.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
+{% extends "base.html" %}
 
-    
-        <title>О сайте</title>
-      </head>
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
+{% endblock %}
 
-      <body>
-        <nav class="header-nav">
-            <div class="nav-container">
-              <a href="index" class="nav-link">таймлайн</a>
-              <a href="check" class="nav-link">проверь себя</a>
-              <a href="#" class="nav-link">о сайте</a>
-              <a href="contacts" class="nav-link">контакты</a>
-              <a href="#" class="nav-link nav-burger">☰</a>
-            </div>
-        </nav>
-        <main>  
-            <p class="header-info">О сайте</p>
-            <div class="info">
-                <p>Великий Отечественный Таймлайн</p>
-                <p>ВОТ - информационно-просветительский ресурс о Великой Отечественной Войне. Проект направлен на привлечение внимания широкой общественности к истории Отечества и на просвещение подрастающих поколений.</p>
-                <p>Помимо помощи в получении новых знаний о ВОВ, данный веб-ресурс позволяет закрепить полученные знания в формате восстановления хронологии событий.</p>
-            </div>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
-        <script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
-      </body> 
-</html>
+{% block content %}
+<p class="header-info">О сайте</p>
+<div class="info">
+    <p>Великий Отечественный Таймлайн</p>
+    <p>ВОТ - информационно-просветительский ресурс о Великой Отечественной Войне. Проект направлен на привлечение внимания широкой общественности к истории Отечества и на просвещение подрастающих поколений.</p>
+    <p>Помимо помощи в получении новых знаний о ВОВ, данный веб-ресурс позволяет закрепить полученные знания в формате восстановления хронологии событий.</p>
+</div>
+{% endblock %}
+<script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
+{% block scripts %}
+
+{% endblock %}

@@ -1,70 +1,54 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/fonts.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/slider.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/media.css') }}">
+{% extends "base.html" %}
 
-    <title>Великий отечественный таймлайн</title>
-  </head>
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/slider.css') }}" />
+{% endblock %}
 
-  <body>
-    <header>
-      <nav class="header-nav">
-        <div class="nav-container">
-          <a href="#" class="nav-link">таймлайн</a>
-          <a href="check" class="nav-link">проверь себя</a>
-          <a href="about" class="nav-link">о сайте</a>
-          <a href="contacts" class="nav-link">контакты</a>
-          <a href="#" class="nav-link nav-burger">☰</a>
+{% block header %}
+  <header>
+    <div class="header-container">
+      <h1 class="header-title">
+        <span class="width-text">Великий</span>
+        <span class="width-text">отечественный</span>
+        <span class="width-text">таймлайн</span>
+      </h1>
+      <a href="#timeline-content" class="header-button">Узнайте, что происходило в этот период</a>
+    </div>
+  </header>
+{% endblock %}
+
+{% block content %}
+    <section id="timeline-content">
+      <div class="container">
+        <div class="timeline-slider-container">
+          <div class="timeline-slider-help">
+            <span><---</span>
+            <span>передвигайте ползунки, чтобы поменять даты</span>
+            <span>---></span>
+          </div>
+          <div class="timeline-slider"></div>
+          <div class="timeline-date">
+            <p class="left-date"></p>
+            <a href="check" class="to_test">Пройти тест</a>
+            <p class="right-date"></p>
+          </div>
         </div>
-      </nav>
-      <div class="header-container">
-        <h1 class="header-title">
-          <span class="width-text">Великий</span>
-          <span class="width-text">отечественный</span>
-          <span class="width-text">таймлайн</span>
-        </h1>
-        <a href="#timeline-content" class="header-button">Узнайте, что происходило в этот период</a>
+        <div class="timeline-content" >
+        </div>
+        <div class="outer">
+          <div class="notice-window">
+            <p class="notice">Выберите промежуток хотя бы из двух месяцев</p>
+            <button class="close">Закрыть</button>
+          </div>
+        </div>
       </div>
-    </header>
-    <main >
-      <section id="timeline-content">
-        <div class="container">
-          <div class="timeline-slider-container">
-            <div class="timeline-slider-help">
-              <span><---</span>
-              <span>передвигайте ползунки, чтобы поменять даты</span>
-              <span>---></span>
-            </div>
-            <div class="timeline-slider"></div>
-            <div class="timeline-date">
-              <p class="left-date"></p>
-              <a href="check" class="to_test">Пройти тест</a>
-              <p class="right-date"></p>
-            </div>
-          </div>
-          <div class="timeline-content" >
-          </div>
-          <div class="outer">
-            <div class="notice-window">
-              <p class="notice">Выберите промежуток хотя бы из двух месяцев</p>
-              <button class="close">Закрыть</button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>все права защищены</footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/range-slider-input@2.4/dist/rangeslider.umd.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
-  </body>
-</html>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/range-slider-input@2.4/dist/rangeslider.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+{% endblock %}
