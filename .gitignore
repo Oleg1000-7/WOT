@@ -1,1 +1,3 @@
 /db/backup_for_base.py
+.idea
+__pycache__
