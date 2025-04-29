@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
   xhr.send();
 
   xhr.onload = function () {
-    console.log("a")
     if (xhr.status != 200) {
       alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
     } else {
