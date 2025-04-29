@@ -15,3 +15,9 @@
   <li>Фиксирование лучших результатов пользователей в тесте и запись результатов в БД</li>
   
 </ul>
+
+<h1>ПЗ</h1>
+<a href="https://docs.google.com/document/d/1bMfPsrs53kixiLmSD-0fyrrg0hdsTTYv1gi09iDUQrI/edit?usp=sharing">ссылка</a>
+
+<h1>Презентация</h1>
+<a href="https://docs.google.com/presentation/d/1fMi90Eo5PwWdYQpLw3yIKLKmxdQeqXdL5XmcJ33fMB8/edit?usp=sharing">ссылка</a>
