@@ -5,6 +5,7 @@ new Sortable(test, {
     ghostClass: 'element-choosen'
 });
 
+console.log(window.location)
 const searchParams = new URLSearchParams(window.location.search);
 for (const param of searchParams) {
     console.log(param);
@@ -161,7 +162,7 @@ function check(evt) {
     let ans = test.querySelectorAll("p");
     let indexes_ans = [];
     for (let i = 0; i < length; ++i){
-        console.log(ans[i].innerHTML);
+        // console.log(ans[i].innerHTML);
         // indexes_ans.push(facts.indexOf(ans[i].innerHTML));
         for (let j = 0; j < facts.length; ++j){
             for (let k = 0; k < facts[j].length; ++k){
@@ -175,11 +176,13 @@ function check(evt) {
     right_indexes_ans.sort(function(a, b) {
         return a - b;
     });
-    console.log(indexes_ans, right_indexes_ans);
+    // console.log(indexes_ans, right_indexes_ans);
     document.querySelector('.outer').style = "display: flex";
+    let right_answers_count = 0;
     for (let i = 0; i < length; ++i){
         if (indexes_ans[i] == right_indexes_ans[i]){
             test.childNodes[i].style = "background-color: #0F0";
+            right_answers_count++
         }
         else{
             test.childNodes[i].style = "background-color: #F00";
@@ -193,6 +196,14 @@ function check(evt) {
         console.log("НЕПРАВИЛЬНО, ПОПРОБУЙ ЕЩЁ!");
         document.querySelector('.result').innerHTML = "Неправильно!<br>Попробуй ещё!";
     }
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/check_res');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({"percent" : right_answers_count / length * 100, "months" : ""}));
+    console.log(searchParams.get("left_date"));
+    console.log(searchParams.get("right_date"));
+    console.log(document.querySelector('.header-test').innerHTML);
 }
 
 document.querySelector(".confirm").addEventListener("click", check);
@@ -210,3 +221,9 @@ document.querySelector(".outer").addEventListener("click", (evt) => {
         }
     }
 });
+
+// document.querySelector(".to_test").addEventListener("click", (e)=>{
+//     e.preventDefault()
+//     window.location.href = "/check/Июнь1994-Август"
+// })
+

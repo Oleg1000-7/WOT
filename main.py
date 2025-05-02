@@ -39,6 +39,9 @@ def index():
     else:
         return {"status": "ok"}
 
+@app.route("/check_res", methods=["POST"])
+def check_res():
+    return ""
 
 @app.route("/check")
 def check():

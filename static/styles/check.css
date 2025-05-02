@@ -91,3 +91,9 @@ li p {
 .save:hover {
     opacity: 1;
 }
+
+.button-holder {
+    width: 100%;
+    position: sticky;
+    bottom: 15px;
+}
