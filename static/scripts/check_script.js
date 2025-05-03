@@ -200,9 +200,7 @@ function check(evt) {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/check_res');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({"percent" : right_answers_count / length * 100, "months" : ""}));
-    console.log(searchParams.get("left_date"));
-    console.log(searchParams.get("right_date"));
+    xhr.send(JSON.stringify({"percent" : right_answers_count / length * 100, "left_date" : searchParams.get("left_date"), "right_date" : searchParams.get("right_date")}));
     console.log(document.querySelector('.header-test').innerHTML);
 }
 
@@ -221,9 +219,3 @@ document.querySelector(".outer").addEventListener("click", (evt) => {
         }
     }
 });
-
-// document.querySelector(".to_test").addEventListener("click", (e)=>{
-//     e.preventDefault()
-//     window.location.href = "/check/Июнь1994-Август"
-// })
-

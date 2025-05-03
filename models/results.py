@@ -2,11 +2,11 @@ from datetime import datetime
 
 import sqlalchemy
 from sqlalchemy.orm import relationship
+from sqlalchemy_serializer import SerializerMixin
 
 from db.db import db
-from flask_login import UserMixin
 
-class Results(db.Model, UserMixin):
+class Results(db.Model, SerializerMixin):
     __tablename__ = 'results'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,

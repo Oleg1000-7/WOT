@@ -1,12 +1,12 @@
-from sqlalchemy.orm import Mapped, mapped_column
+import sqlalchemy
 from sqlalchemy_serializer import SerializerMixin
 
-from db.db import db, Base
+from db.db import db
 
 
 class Events(db.Model, SerializerMixin):
     __tablename__ = "events"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    month_number: Mapped[int] = mapped_column(nullable=False)
-    event_description: Mapped[str] = mapped_column(nullable=False)
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    month_number = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
+    event_description = sqlalchemy.Column(sqlalchemy.String, nullable=False)

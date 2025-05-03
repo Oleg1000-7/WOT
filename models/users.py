@@ -14,10 +14,13 @@ class User(db.Model, UserMixin):
     email = sqlalchemy.Column(sqlalchemy.String, nullable=False)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
-    games = relationship("Results", back_populates="user")
+    results = relationship("Results", back_populates="user")
 
     def set_password(self, password: str):
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
+
+    def get_id(self):
+        return self.id

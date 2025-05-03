@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, redirect
-from flask_login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 
+from db.backup_for_base import create_data
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
 from models.events import Events
 from models.users import User
+from models.results import Results
 from resources.event_resource import EventResource, EventsListResource
 
 from db.db import *
@@ -40,7 +42,16 @@ def index():
         return {"status": "ok"}
 
 @app.route("/check_res", methods=["POST"])
+@login_required
 def check_res():
+    req = request.json
+    r = Results(
+        user_id= current_user.id,
+        months = f"{req["left_date"]} - {req["right_date"]}",
+        percents = req["percent"]
+    )
+    db.session.add(r)
+    db.session.commit()
     return ""
 
 @app.route("/check")
@@ -69,10 +80,6 @@ def reqister():
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
-        print(form.name.data)
-        print(form.email.data)
-        print(form.password.data)
-        print(form.password_again.data)
 
         user = User(
             name=form.name.data,
@@ -102,6 +109,10 @@ def login():
 def logout():
     logout_user()
     return redirect("/")
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html', title="Профиль")
 
 if __name__ == "__main__":
     app.run(debug=True)
