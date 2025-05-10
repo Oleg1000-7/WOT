@@ -48,7 +48,7 @@ def check_res():
     r = Results(
         user_id= current_user.id,
         months = f"{req["left_date"]} - {req["right_date"]}",
-        percents = req["percent"]
+        percents = round(req["percent"], 1)
     )
     db.session.add(r)
     db.session.commit()
@@ -111,8 +111,10 @@ def logout():
     return redirect("/")
 
 @app.route('/profile')
+@login_required
 def profile():
-    return render_template('profile.html', title="Профиль")
+    results = db.session.query(Results).filter(Results.user_id == current_user.id).all()
+    return render_template('profile.html', title="Профиль", results=results)
 
 if __name__ == "__main__":
     app.run(debug=True)

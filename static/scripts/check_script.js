@@ -12,6 +12,8 @@ for (const param of searchParams) {
 }
 console.log(searchParams);
 
+let xhr = new XMLHttpRequest();
+
 let data = {
     "Июнь 1941": ["Начало ВОВ", "В войну против СССР вступают Румыния, Италия, Словакия, Финляндия и Венгрия", "Начало обороны Заполярья", "Начало Прибалтийской стратегической оборонительной операции", "Начало Белостокско-Минского сражения", "Создание Южного фронта"],
     "Июль 1941": ["Начало Ленинградской оборонительной операции", "Начало Смоленского сражения", "Создание Центрального и Резервного фронтов", "Начало Киевской оборонительной операции", "Завершение Прибалтийской стратегической оборонительной операции"],
@@ -62,7 +64,6 @@ let data = {
     "Апрель 1945": ["Начало Берлинской наступательной операции", "Завершение Восточно-Прусской, Восточно-Померанской, Венской операций", "Договор о дружбе, взаимопомощи и послевоенном сотрудничестве с Югославией", "Начало конференции ООН в Сан-Франциско при участии СССР"],
     "Май 1945": ["Проведена Пражская операция", "Завершение Курляндской, Берлинской наступательной, Моравско-Остравской операций", "Завершение Освобождения восточной части Австрии", "Победа над фашистской Германией"]
 }
-
 let months = [
     "Июнь 1941",
     "Июль 1941",
@@ -113,13 +114,23 @@ let months = [
     "Апрель 1945",
     "Май 1945"
 ];
+
+xhr.open('GET', '/api/v2/events');
+xhr.send();
+xhr.onload = function () {
+    if (xhr.status != 200) {
+      alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
+    } else {
+      data = JSON.parse(xhr.response)["events"];
+        console.log(data)
+    }
+}
+
 let facts = [];
 
 for (let i = 0; i < 48; ++i){
     facts.push(data[months[i]]);
 }
-
-console.log(facts);
 
 let test_facts = [];
 let length = 0;
@@ -162,8 +173,6 @@ function check(evt) {
     let ans = test.querySelectorAll("p");
     let indexes_ans = [];
     for (let i = 0; i < length; ++i){
-        // console.log(ans[i].innerHTML);
-        // indexes_ans.push(facts.indexOf(ans[i].innerHTML));
         for (let j = 0; j < facts.length; ++j){
             for (let k = 0; k < facts[j].length; ++k){
                 if (ans[i].innerHTML == facts[j][k]){
@@ -176,7 +185,6 @@ function check(evt) {
     right_indexes_ans.sort(function(a, b) {
         return a - b;
     });
-    // console.log(indexes_ans, right_indexes_ans);
     document.querySelector('.outer').style = "display: flex";
     let right_answers_count = 0;
     for (let i = 0; i < length; ++i){
@@ -197,11 +205,9 @@ function check(evt) {
         document.querySelector('.result').innerHTML = "Неправильно!<br>Попробуй ещё!";
     }
 
-    let xhr = new XMLHttpRequest();
     xhr.open('POST', '/check_res');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({"percent" : right_answers_count / length * 100, "left_date" : searchParams.get("left_date"), "right_date" : searchParams.get("right_date")}));
-    console.log(document.querySelector('.header-test').innerHTML);
 }
 
 document.querySelector(".confirm").addEventListener("click", check);

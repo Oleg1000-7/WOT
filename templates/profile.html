@@ -5,7 +5,24 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
 {%endblock%}
 
 {% block content %}
+    <div class="profile-info">
+        <img class="profile-picture" src="{{ url_for('static', filename='images/default_profile_picture.jpg') }}">
+        <article>
+            <p>пройдено тестов: {{ results|length }}</p>
+            <nav>
+                <a href="/logout" class="btn btn-danger btn-lg">Выйти из аккаунта</a>
+            </nav>
+        </article>
+    </div>
+    {% for i in results %}
+        <div class="result-item">
+            <p>{{ i.months }}</p>
+            <p>{{ i.percents }}%</p>
+            <p>{{ i.date }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
