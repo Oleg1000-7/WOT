@@ -2,10 +2,8 @@ from flask import Flask, render_template, request, redirect
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 
-from db.backup_for_base import create_data
 from forms.login_form import LoginForm
 from forms.register_form import RegisterForm
-from models.events import Events
 from models.users import User
 from models.results import Results
 from resources.event_resource import EventResource, EventsListResource
@@ -29,9 +27,11 @@ api = Api(app)
 api.add_resource(EventsListResource, '/api/v2/events')
 api.add_resource(EventResource, '/api/v2/events/<int:event_id>')
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return db.session.query(User).get(user_id)
+
 
 @app.route("/")
 @app.route("/index")
@@ -41,18 +41,20 @@ def index():
     else:
         return {"status": "ok"}
 
+
 @app.route("/check_res", methods=["POST"])
 @login_required
 def check_res():
     req = request.json
     r = Results(
-        user_id= current_user.id,
-        months = f"{req["left_date"]} - {req["right_date"]}",
-        percents = round(req["percent"], 1)
+        user_id=current_user.id,
+        months=f"{req["left_date"]} - {req["right_date"]}",
+        percents=round(req["percent"], 1)
     )
     db.session.add(r)
     db.session.commit()
     return ""
+
 
 @app.route("/res_remove/<int:id>", methods=["GET", "POST"])
 @login_required
@@ -64,6 +66,7 @@ def res_delete(id):
     else:
         return "Game result not found", 404
     return redirect("/profile")
+
 
 @app.route("/check")
 def check():
@@ -78,6 +81,7 @@ def contacts():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
@@ -102,6 +106,7 @@ def reqister():
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -115,11 +120,13 @@ def login():
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
 
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect("/")
+
 
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
@@ -135,5 +142,6 @@ def profile():
             file.write(request.files["file"].read())
     return render_template('profile.html', title="Профиль", results=results, path=path)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

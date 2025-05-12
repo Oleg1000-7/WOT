@@ -6,6 +6,7 @@ from sqlalchemy_serializer import SerializerMixin
 
 from db.db import db
 
+
 class Results(db.Model, SerializerMixin):
     __tablename__ = 'results'
 
