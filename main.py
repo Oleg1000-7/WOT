@@ -37,7 +37,7 @@ def load_user(user_id):
 @app.route("/index")
 def index():
     if request.method == "GET":
-        return render_template("index.html")
+        return render_template("index.html", title="Главная")
     else:
         return {"status": "ok"}
 
@@ -70,17 +70,17 @@ def res_delete(id):
 
 @app.route("/check")
 def check():
-    return render_template("check.html")
+    return render_template("check.html", title="Тест")
 
 
 @app.route("/contacts")
 def contacts():
-    return render_template("contacts.html")
+    return render_template("contacts.html", title="Контакты")
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", title="О сайте")
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -117,6 +117,7 @@ def login():
             return redirect("/")
         return render_template('login.html',
                                message="Неправильный логин или пароль",
+                               title="Авторизация",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
 
