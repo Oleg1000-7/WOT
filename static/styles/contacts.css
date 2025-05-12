@@ -1,4 +1,4 @@
-.header-contacs {
+.header-contacts {
     text-align: center;
     text-decoration: none;
     font-size: 7rem;
@@ -8,7 +8,7 @@
     color: var(--black-brown-ribbon);
 }
 
-.contacs p {
+.contacts p {
     font-size: 1.8rem;
     color: var(--black-brown-ribbon);
     text-decoration: none;
@@ -22,6 +22,6 @@
     padding: 1rem 0;
 }
 
-.contacs .person {
+.contacts .person {
     font-size: 2.6rem;
 }

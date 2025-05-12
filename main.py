@@ -54,6 +54,17 @@ def check_res():
     db.session.commit()
     return ""
 
+@app.route("/res_remove/<int:id>", methods=["GET", "POST"])
+@login_required
+def res_delete(id):
+    res = db.session.query(Results).filter(Results.id == id).first()
+    if res:
+        db.session.delete(res)
+        db.session.commit()
+    else:
+        return "Game result not found", 404
+    return redirect("/profile")
+
 @app.route("/check")
 def check():
     return render_template("check.html")
@@ -110,11 +121,19 @@ def logout():
     logout_user()
     return redirect("/")
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
     results = db.session.query(Results).filter(Results.user_id == current_user.id).all()
-    return render_template('profile.html', title="Профиль", results=results)
+    if os.path.exists(f"static/profile_pics/{current_user.id}/image.jpg"):
+        path = f"static/profile_pics/{current_user.id}/image.jpg"
+    else:
+        path = "static/profile_pics/default/image.jpg"
+    if request.method == 'POST':
+        os.makedirs(f"static/profile_pics/{current_user.id}", exist_ok=True)
+        with open(f"static/profile_pics/{current_user.id}/image.jpg", "wb") as file:
+            file.write(request.files["file"].read())
+    return render_template('profile.html', title="Профиль", results=results, path=path)
 
 if __name__ == "__main__":
     app.run(debug=True)
