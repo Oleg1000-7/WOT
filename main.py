@@ -32,6 +32,9 @@ api.add_resource(EventResource, '/api/v2/events/<int:event_id>')
 def load_user(user_id):
     return db.session.query(User).get(user_id)
 
+@app.errorhandler(401)
+def to_login(error):
+    return redirect("/login")
 
 @app.route("/")
 @app.route("/index")
@@ -69,6 +72,7 @@ def res_delete(id):
 
 
 @app.route("/check")
+@login_required
 def check():
     return render_template("check.html", title="Тест")
 
@@ -143,7 +147,6 @@ def profile():
             file.write(request.files["file"].read())
     return render_template('profile.html', title="Профиль", results=results, path=path)
 
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)

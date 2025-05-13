@@ -5,12 +5,7 @@ new Sortable(test, {
     ghostClass: 'element-choosen'
 });
 
-console.log(window.location)
 const searchParams = new URLSearchParams(window.location.search);
-for (const param of searchParams) {
-    console.log(param);
-}
-console.log(searchParams);
 
 let xhr = new XMLHttpRequest();
 let data = {}
@@ -67,6 +62,7 @@ let months = [
 let facts = [];
 let test_facts = [];
 let length = 0;
+let right_answers_count = 0;
 
 xhr.open('GET', '/api/v2/events');
 xhr.send();
@@ -83,7 +79,6 @@ xhr.onload = function () {
         for (let i = 0; i < res.length; i++){
             data[months[res[i]["month_number"]]].push(res[i]["event_description"])
         };
-        console.log(data);
         createTestElements();
     }
 }
@@ -146,7 +141,6 @@ function check(evt) {
         return a - b;
     });
     document.querySelector('.outer').style = "display: flex";
-    let right_answers_count = 0;
     for (let i = 0; i < length; ++i){
         if (indexes_ans[i] == right_indexes_ans[i]){
             test.childNodes[i].style = "background-color: #0F0";
@@ -157,14 +151,15 @@ function check(evt) {
         }
     }
     if (right_indexes_ans.join() === indexes_ans.join()){
-        console.log("МОЛОДЕЦ!!!!!!!!!!!!!!!!");
         document.querySelector('.result').innerHTML = "Правильно!<br>Молодец!";
     }
     else{
-        console.log("НЕПРАВИЛЬНО, ПОПРОБУЙ ЕЩЁ!");
         document.querySelector('.result').innerHTML = "Неправильно!<br>Попробуй ещё!";
     }
+    sendToDatabase();
+}
 
+function sendToDatabase() {
     xhr.open('POST', '/check_res');
     xhr.setRequestHeader('Content-Type', 'application/json');
     if(searchParams.size != 0) {
