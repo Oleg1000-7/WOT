@@ -46,4 +46,4 @@
 ![Снимок экрана 2025-05-02 183247](https://github.com/user-attachments/assets/c90cf517-deb9-45f6-8daa-b4f40b12d485)
 
 <h1>Презентация</h1>
-<a href="https://docs.google.com/presentation/d/1fMi90Eo5PwWdYQpLw3yIKLKmxdQeqXdL5XmcJ33fMB8/edit?usp=sharing">ссылка</a>
+<a href="https://docs.google.com/presentation/d/13OU7vM_bcFmQWRYnri7e_M8FRZ2g66D8efwiaGujLdk/edit?usp=sharing">ссылка</a>
