@@ -47,3 +47,5 @@
 
 <h1>Презентация</h1>
 <a href="https://docs.google.com/presentation/d/13OU7vM_bcFmQWRYnri7e_M8FRZ2g66D8efwiaGujLdk/edit?usp=sharing">ссылка</a>
+<h1>Ссылка</h1>
+<a href="https://oooleg.pythonanywhere.com/">https://oooleg.pythonanywhere.com/</a>
