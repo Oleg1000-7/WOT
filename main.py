@@ -32,9 +32,11 @@ api.add_resource(EventResource, '/api/v2/events/<int:event_id>')
 def load_user(user_id):
     return db.session.query(User).get(user_id)
 
+
 @app.errorhandler(401)
 def to_login(error):
     return redirect("/login")
+
 
 @app.route("/")
 @app.route("/index")
@@ -89,6 +91,8 @@ def about():
 
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
+    if current_user.is_authenticated:
+        return redirect("/")
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
@@ -113,6 +117,8 @@ def reqister():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect("/")
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.query(User).filter(User.email == form.email.data).first()
@@ -146,6 +152,7 @@ def profile():
         with open(f"static/profile_pics/{current_user.id}/image.jpg", "wb") as file:
             file.write(request.files["file"].read())
     return render_template('profile.html', title="Профиль", results=results, path=path)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
