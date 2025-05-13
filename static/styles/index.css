@@ -449,3 +449,8 @@ main {
   padding: 1.5rem 0;
   transition: 0.2s ease-in-out;
 }
+
+.warning {
+    font-size: 1.4rem;
+    color: rgb(149, 0, 0);
+}
