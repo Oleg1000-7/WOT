@@ -1,7 +1,7 @@
 .profile-picture {
     border-radius: 50%;
     border: black solid 2px;
-    width: 25%;
+    width: 45%;
 }
 
 .profile-info {
@@ -35,6 +35,10 @@
 }
 
 .results > h1 {
+    text-align: center;
+}
+
+.results > h3 {
     text-align: center;
 }
 

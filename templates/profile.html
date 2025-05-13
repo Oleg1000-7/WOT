@@ -19,12 +19,12 @@
             <nav>
                 <a href="/logout" class="btn btn-danger btn-lg"><h3>Выйти из аккаунта</h3></a>
             </nav>
-            <p>пройдено тестов: {{ results|length }}</p>
         </article>
     </div>
 
     <div class="results">
         <h1>Ваши результаты:</h1>
+        <h3>пройдено тестов: {{ results|length }}</h3>
         {% for i in results %}
             <div class="result-item">
                 <article>
@@ -42,4 +42,5 @@
 
 {% block scripts %}
    <script src="{{ url_for('static', filename='scripts/photo.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/menu.js') }}"></script>
 {% endblock %}
