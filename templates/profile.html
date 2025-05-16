@@ -1,45 +1,67 @@
 {% extends "base.html" %}
 
 {%block styles%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
 {%endblock%}
 
 {% block content %}
-    <div class="profile-info">
-        <div class="picture-block">
-            <img class="profile-picture" src="{{ path }}">
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-photo-section">
+            <div class="photo-frame">
+                <img src="{{ path }}" alt="Фото профиля" class="profile-photo">
+            </div>
             <form id="uploadForm" method="POST" enctype="multipart/form-data">
-                <input type="file" class="form-control-file" id="photo" name="file">
+                <input type="file" class="photo-upload custom-file-input" id="photo" name="file" accept="image/*">
             </form>
+            <a href="/logout" class="logout-button">Выйти из аккаунта</a>
         </div>
-        <article>
-            <nav>
-                <a href="/logout" class="btn btn-danger btn-lg"><h3>Выйти из аккаунта</h3></a>
-            </nav>
-        </article>
+       
     </div>
 
-    <div class="results">
-        <h1>Ваши результаты:</h1>
-        <h3>пройдено тестов: {{ results|length }}</h3>
-        {% for i in results %}
-            <div class="result-item">
-                <article>
-                    <p>{{ i.months }}</p>
-                    <p>{{ i.percents }}%</p>
-                    <p>{{ i.date }}</p>
-                </article>
-                <div>
-                    <a href="/res_remove/{{ i.id }}" class="btn btn-danger btn-lg">Удалить</a>
-                </div>
-            </div>
-        {% endfor %}
+    <div class="results-section">
+        <h2 class="results-title">Ваши результаты</h2>
+
+        {% if results|length > 0 %}
+        <div class="results-table-container">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Дата и время прохождения</th>
+                        <th>Выбранный период</th>
+                        <th>Результат</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in results %}
+                    <tr>
+                        <td>{{ i.modified_date }}</td>
+                        <td>{{ i.months }}</td>
+                        <td>
+                            <div class="result-value">{{ i.percents }}%</div>
+                        </td>
+                        <td>
+                            <a href="/res_remove/{{ i.id }}" class="delete-button" title="Удалить результат">
+                                <img src="{{ url_for('static', filename='images/trash_can.png') }}" alt="Удалить">
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-results">
+            <p>У вас пока нет результатов</p>
+            <a href="/check" class="start-test-button">Пройти тест</a>
+        </div>
+        {% endif %}
     </div>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
-   <script src="{{ url_for('static', filename='scripts/photo.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/photo.js') }}"></script>
 {% endblock %}

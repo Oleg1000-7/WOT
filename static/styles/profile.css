@@ -1,75 +1,270 @@
-.profile-picture {
-    border-radius: 50%;
-    border: black solid 2px;
-    width: 45%;
+/* Обнуление стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.profile-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--black-brown-ribbon);
+/* Использование цветовых переменных из index.css */
+:root {
+    --white-sky: #c1ddee;
+    --red: #a21311;
+    --blue-sky: #80aedd;
+    --white-yellow: #e9ddc2;
+    --accent-sky: #b5c7db;
+    --orange-ribbon: #be893b;
+    --accent-pink: #bc4c7c;
+    --weak-green: #989184;
+    --strange-gray: #7f7070;
+    --black-brown-ribbon: #363327;
 }
 
-.profile-info > article {
+/* Основной контейнер профиля */
+.profile-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+    min-height: 100vh;
+    background-color: var(--white-sky);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.profile-info > article {
-    direction: rtl;
-}
-
-.profile-info > article > p {
-    font-size: 3rem;
-}
-
-.results {
-    margin-top: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.results > h1 {
-    text-align: center;
-}
-
-.results > h3 {
-    text-align: center;
-}
-
-.result-item {
-    margin-top: 35px;
-    padding-left: 1%;
-    font-size: 3rem;
-
-    background-color: var(--black-brown-ribbon);
-    color: var(--white-sky);
-    border-radius: 7px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.result-item > div {
-    margin: 1%;
-    display: flex;
-    flex-direction: column;
-    justify-self: start;
-}
-
-.picture-block {
-    display: flex;
-    flex-direction: column;
-}
-
-.picture-block > form {
     align-items: start;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-top: 5px;
+    gap: 10px;
+}
+
+/* Шапка профиля */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--accent-sky);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+/* Секция с фотографией */
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+}
+
+.photo-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 5px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-upload {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid var(--black-brown-ribbon);
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Секция с кнопками действий */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logout-button {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: var(--red);
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); */
+}
+
+/* .logout-button:hover {
+    background-color: #8a1210;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+} */
+
+/* Секция с результатами */
+.results-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.results-title {
+    font-size: 3.5rem;
+    color: var(--black-brown-ribbon);
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.results-title:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--orange-ribbon);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Таблица результатов */
+.results-table-container {
+    overflow-x: auto;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+}
+
+.results-table th {
+    background-color: var(--black-brown-ribbon);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.results-table th:first-child {
+    border-top-left-radius: 5px;
+}
+
+.results-table th:last-child {
+    border-top-right-radius: 5px;
+    text-align: center;
+}
+
+.results-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.results-table td:last-child {
+    text-align: center;
+}
+
+.results-table tr:hover {
+    background-color: rgba(193, 221, 238, 0.3);
+}
+
+.result-value {
+    background-color: var(--accent-sky);
+    color: var(--black-brown-ribbon);
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.delete-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(162, 19, 17, 0.1);
+    transition: all 0.3s;
+}
+
+.delete-button:hover {
+    background-color: rgba(162, 19, 17, 0.2);
+    transform: scale(1.1);
+}
+
+.delete-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Сообщение при отсутствии результатов */
+.no-results {
+    text-align: center;
+    padding: 30px;
+}
+
+.no-results p {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: var(--strange-gray);
+}
+
+.start-test-button {
+    display: inline-block;
+    background-color: var(--blue-sky);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    padding: 5px 20px;
+}
+
+.custom-file-input {
+  color: transparent;
+  padding: 0;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Сменить аватар';
+  color: black;
+  display: inline-block;
+  /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
+  /* border: 1px solid #999; */
+  border-radius: 3px;
+  /* padding: 5px 8px; */
+  padding: 0;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+
+
+#uploadForm {
+    background-color: transparent !important;
 }

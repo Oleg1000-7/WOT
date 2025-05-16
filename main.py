@@ -148,6 +148,9 @@ def logout():
 @login_required
 def profile():
     results = db.session.query(Results).filter(Results.user_id == current_user.id).all()
+    for i in results:
+        i.modified_date = str(i.modified_date)
+        i.modified_date = i.modified_date[:i.modified_date.index(".")]
     if os.path.exists(f"static/profile_pics/{current_user.id}/image.jpg"):
         path = f"static/profile_pics/{current_user.id}/image.jpg"
     else:

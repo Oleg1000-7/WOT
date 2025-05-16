@@ -50,6 +50,7 @@ header {
 .header-nav {
   background: transparent;
   border-bottom: 2px solid rgba(0, 0, 0, 0.753);
+  width: 100%;
 }
 
 .nav-container {
