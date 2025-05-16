@@ -87,12 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
   rightDate.textContent = timelineDateArray[47];
 
   const createTimelineCard = function (el) {
+    n = timelineDateArray.indexOf(el[0])
     let randImage = Math.floor(1 + Math.random() * (10 + 1 - 1));
-    let randText = Math.floor(1 + Math.random() * (4 + 1 - 1));
     const timelineCard = document.createElement("a");
+    timelineCard.href = `/date/${n}`
     timelineCard.className = "timeline-card";
     timelineCard.dataset.date = el[0];
-    timelineCard.dataset.index = timelineDateArray.indexOf(el[0]);
+    timelineCard.dataset.index = n;
 
     const timelineDivImage = document.createElement("div");
 

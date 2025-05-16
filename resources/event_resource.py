@@ -6,18 +6,11 @@ from db.db import db
 from models.events import Events
 
 
-def abort_if_news_not_found(event_id):
-    news = db.session.get(Events, event_id)
-    if not news:
-        abort(404, message=f"Event with id = {event_id} not found")
-
-
 class EventResource(Resource):
-    def get(self, event_id):
-        abort_if_news_not_found(event_id)
-        events = db.session.get(Events, event_id)
-        return jsonify({'news': events.to_dict(
-            only=('month_number', 'event_description'))})
+    def get(self, event_date):
+        events = db.session.query(Events).filter(Events.month_number == event_date).all()
+        return jsonify({'event': [item.to_dict(
+            only=('event_description',)) for item in events]})
 
 
 class EventsListResource(Resource):

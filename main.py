@@ -25,7 +25,7 @@ with app.app_context():
 
 api = Api(app)
 api.add_resource(EventsListResource, '/api/v2/events')
-api.add_resource(EventResource, '/api/v2/events/<int:event_id>')
+api.add_resource(EventResource, '/api/v2/events/<int:event_date>')
 
 
 @login_manager.user_loader
@@ -45,6 +45,11 @@ def index():
         return render_template("index.html", title="Главная")
     else:
         return {"status": "ok"}
+
+
+@app.route("/date/<int:date_number>")
+def date(date_number):
+    return render_template("date.html", title="Что произошло")
 
 
 @app.route("/check_res", methods=["POST"])
