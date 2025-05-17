@@ -60,6 +60,7 @@ header {
   align-items: center;
   max-width: 90%;
   background: transparent;
+  gap: min(5px);
 }
 
 .nav-container>div {
@@ -75,7 +76,6 @@ header {
 
 .nav-link {
   text-align: center;
-  /* width: 25%; */
   text-decoration: none;
   color: var(--black-brown-ribbon);
   font-size: 2rem;
@@ -98,7 +98,6 @@ header {
 }
 
 .nav-burger {
- 
   display: none;
 }
 

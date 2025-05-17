@@ -46,3 +46,15 @@
     max-width: 98vw;
   }
 }
+
+@media screen and (max-width: 960px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  .profile-header{
+    width: 100%;
+  }
+  .results-section{
+    width: 100%;
+  }
+}
