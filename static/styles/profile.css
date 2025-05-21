@@ -101,16 +101,7 @@
     transition: all 0.3s;
     border: none;
     cursor: pointer;
-    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); */
 }
-
-/* .logout-button:hover {
-    background-color: #8a1210;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-} */
-
-/* Секция с результатами */
 .results-section {
     background-color: white;
     padding: 30px;
